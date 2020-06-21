@@ -1,0 +1,15 @@
+from httpClient import myUrllib as http
+import webbrowser as browser
+import codecs
+import unicodedata
+
+page = http('http://www.google.com')
+page = page.decode('UTF-8', 'ignore')
+html = unicodedata.normalize('NFKD', page)
+
+with open("page.html", 'w') as file:
+    file.write(html)
+
+browser.open('page.html', 'r',)
+
+
